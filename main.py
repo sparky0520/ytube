@@ -1,4 +1,5 @@
 from downloader import YouTubeDownloader
+import downloader
 
 
 videos = ["https://www.youtube.com/shorts/-LNRTSVqU7Q",
@@ -288,7 +289,14 @@ videos = ["https://www.youtube.com/shorts/-LNRTSVqU7Q",
 "https://www.youtube.com/shorts/zkJZBE_gzSc",
 ]
 
-for i in videos:
-    
-    downloader = YouTubeDownloader()
-    downloader.download('https://www.youtube.com/watch?v=VIDEO_ID')
+# for i in videos:
+#     downloader = YouTubeDownloader()
+#     downloader.download('https://www.youtube.com/watch?v=VIDEO_ID')
+
+downloader = YouTubeDownloader(output_path="shorts")
+results = downloader.download_batch(
+    urls=videos,
+    delay=3,
+    random_delay=True,
+    skip_existing=True,
+)
